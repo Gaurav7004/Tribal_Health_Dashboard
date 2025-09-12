@@ -13,7 +13,7 @@ def CategoryDropdown(id, data, label="Select a Category"):
             style={'width': '100%'},
             optionHeight=60
         )
-    ], style={"paddingLeft": "10px"})
+    ], )
 
 # def CategoryDropdown_tab2(id, data, label="Select a Category (Tab 2)"):
 #     return CategoryDropdown(id=id, data=data, label=label)

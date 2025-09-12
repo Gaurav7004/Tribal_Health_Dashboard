@@ -41,7 +41,7 @@ def tab1_layout(states_data, placeholder_categories):
                     )
                 ),
                 width=4,
-                style={"textAlign": "center"}
+                style={"textAlign": "center", 'color': 'black', 'font-size': 20}
             ),
 
             dbc.Col(
@@ -74,7 +74,7 @@ def tab1_layout(states_data, placeholder_categories):
                 ),
                 width=4
             )
-        ], className="mb-3 gx-2"),
+        ], className="mx-1 mb-3 gx-2"),
 
         # Indicator dropdowns
         dbc.Row([
@@ -88,27 +88,38 @@ def tab1_layout(states_data, placeholder_categories):
             ) for i in range(4)
         ], justify="between", className="mb-3 gx-2"),
 
-        # Chart containers
-        dcc.Loading(
-            id="loading-bar-tab1",
-            type="circle",
-            children=html.Div(id='bar-chart-container', style={"display": "none"})
+        # Chart containers inside a single box
+        dbc.Card(
+            [
+                dbc.CardHeader("Visualizations", className="fw-bold"),
+                dbc.CardBody(
+                    [
+                        dcc.Loading(
+                            id="loading-bar-tab1",
+                            type="circle",
+                            children=html.Div(id='bar-chart-container', style={"display": "none"})
+                        ),
+                        dcc.Loading(
+                            id="loading-violin-tab1",
+                            type="circle",
+                            children=html.Div(id='violin-chart-container', style={"display": "none"})
+                        ),
+                        dcc.Loading(
+                            id="loading-map-tab1",
+                            type="circle",
+                            children=html.Div(id='map-container', style={"display": "none"})
+                        ),
+                        dcc.Loading(
+                            id="loading-bubble-tab1",
+                            type="circle",
+                            children=html.Div(id='bubble-chart-container', style={"display": "none"})
+                        )
+                    ],
+                    style={"padding": "20px"}
+                )
+            ], className="mx-2"
         ),
-        dcc.Loading(
-            id="loading-violin-tab1",
-            type="circle",
-            children=html.Div(id='violin-chart-container', style={"display": "none"})
-        ),
-        dcc.Loading(
-            id="loading-map-tab1",
-            type="circle",
-            children=html.Div(id='map-container', style={"display": "none"})
-        ),
-        dcc.Loading(
-            id="loading-bubble-tab1",
-            type="circle",
-            children=html.Div(id='bubble-chart-container', style={"display": "none"})
-        ),
+
 
         # AI Insights section
         dcc.Loading(
@@ -130,7 +141,6 @@ def tab1_layout(states_data, placeholder_categories):
             )
         )
     ])
-
 
 def tab2_layout(states_data, placeholder_categories):
     return html.Div([
@@ -159,7 +169,8 @@ def tab2_layout(states_data, placeholder_categories):
                     )
                 ),
                 width=4,
-                style={"textAlign": "center"}
+                style={"textAlign": "center", 'color': 'black', 'font-size': 20}
+
             ),
 
             dbc.Col(
@@ -190,7 +201,7 @@ def tab2_layout(states_data, placeholder_categories):
                         data=placeholder_categories
                     )
                 ),
-                width=4
+                width=6
             ),
             dbc.Col(
                 dcc.Loading(
@@ -201,9 +212,9 @@ def tab2_layout(states_data, placeholder_categories):
                         data=placeholder_categories
                     )
                 ),
-                width=4
+                width=6
             )
-        ], className="mb-3 gx-2"),
+        ], className="mx-1 mb-3"),
 
         # Indicator dropdowns with loading
         dbc.Row([
@@ -215,28 +226,38 @@ def tab2_layout(states_data, placeholder_categories):
                 ),
                 width=3
             ) for i in range(4)
-        ], justify="between", className="mb-3 gx-2"),
+        ], justify="between", className="mt-3 mb-3 gx-2"),
 
-        # Chart containers
-        dcc.Loading(
-            id="loading-bar-tab2",
-            type="circle",
-            children=html.Div(id='bar-chart-container-tab2', style={"display": "none"})
-        ),
-        dcc.Loading(
-            id="loading-violin-tab2",
-            type="circle",
-            children=html.Div(id='violin-chart-container-tab2', style={"display": "none"})
-        ),
-        dcc.Loading(
-            id="loading-map-tab2",
-            type="circle",
-            children=html.Div(id='map-container-tab2', style={"display": "none"})
-        ),
-        dcc.Loading(
-            id="loading-bubble-tab2",
-            type="circle",
-            children=html.Div(id='bubble-chart-container-tab2', style={"display": "none"})
+        # Chart containers inside a single card
+        dbc.Card(
+            [
+                dbc.CardHeader("Visualizations", className="fw-bold"),
+                dbc.CardBody(
+                    [
+                        dcc.Loading(
+                            id="loading-bar-tab2",
+                            type="circle",
+                            children=html.Div(id='bar-chart-container-tab2', style={"display": "none"})
+                        ),
+                        dcc.Loading(
+                            id="loading-violin-tab2",
+                            type="circle",
+                            children=html.Div(id='violin-chart-container-tab2', style={"display": "none"})
+                        ),
+                        dcc.Loading(
+                            id="loading-map-tab2",
+                            type="circle",
+                            children=html.Div(id='map-container-tab2', style={"display": "none"})
+                        ),
+                        dcc.Loading(
+                            id="loading-bubble-tab2",
+                            type="circle",
+                            children=html.Div(id='bubble-chart-container-tab2', style={"display": "none"})
+                        )
+                    ],
+                    style={"padding": "20px"}
+                )
+            ], className="mx-2 mt-3"
         ),
 
         # AI Insights section
@@ -245,7 +266,7 @@ def tab2_layout(states_data, placeholder_categories):
             type="circle",
             children=html.Div(
                 dbc.Card([
-                    dbc.CardHeader("🤖 AI-Generated Insights", className="fw-bold"),
+                    dbc.CardHeader("Analytical Summary", className="fw-bold"),
                     dbc.CardBody([
                         html.Div(id="ai-insights-output-tab2")
                     ])
@@ -259,6 +280,7 @@ def tab2_layout(states_data, placeholder_categories):
             )
         )
     ])
+
 
 def create_layout():
     app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -320,7 +342,7 @@ def create_layout():
                 'position': 'fixed',
                 'top': '70px',
                 'zIndex': '999',
-                'width': '100%',
+                'width': '90%',
                 'padding': '5px 20px',
                 'display': 'none',
                 'boxShadow': '0 2px 4px rgba(0,0,0,0.2)'
@@ -1050,7 +1072,27 @@ def create_layout():
 
     ### Category and Indicator Dropdown Callback Tab-2-a and Tab-2-b ###
     ### ************************************************************ ###
-    
+
+    # Define related category mappings (adjust based on your rules)
+    CATEGORY_RELATIONS = {
+        1: [2],   # A -> can only compare with B
+        2: [1],   # B -> can only compare with A
+        3: [4, 5, 6],  # C -> related to maternity/delivery/postnatal
+        4: [3, 5, 6],
+        5: [3, 4, 6],
+        6: [3, 4, 5],
+        7: [8],   # Child health -> Child nutrition
+        8: [7, 9],
+        9: [8],   # Nutrition adults -> child nutrition
+        10: [11], # Diabetes -> Hypertension
+        11: [10], # Hypertension -> Diabetes
+        12: [13], # Substance use -> Infectious disease (example)
+        13: [12],
+        14: [15, 16], # Women's empowerment -> Gender violence, HIV knowledge
+        15: [14],
+        16: [14]
+    }
+
     @app.callback(
         Output("category-selection-dropdown-tab2-a", "options"),
         Output("category-selection-dropdown-tab2-b", "options"),
@@ -1066,12 +1108,20 @@ def create_layout():
             for c in categories_data
         ]
 
-        # Filter category A options by removing category B selection
-        options_a = [opt for opt in all_options if opt["value"] != selected_b]
-        # Filter category B options by removing category A selection
-        options_b = [opt for opt in all_options if opt["value"] != selected_a]
+        if selected_a:
+            allowed_b_ids = CATEGORY_RELATIONS.get(selected_a, [])
+            options_b = [opt for opt in all_options if opt["value"] in allowed_b_ids]
+        else:
+            options_b = all_options
+
+        if selected_b:
+            allowed_a_ids = CATEGORY_RELATIONS.get(selected_b, [])
+            options_a = [opt for opt in all_options if opt["value"] in allowed_a_ids]
+        else:
+            options_a = all_options
 
         return options_a, options_b
+
 
     @app.callback(
         Output({'type': 'indicator-selection-tab2', 'index': dash.ALL}, 'options'),
@@ -1466,15 +1516,23 @@ def create_layout():
             category_type = "Total"
 
         selected = [val for val in selected_indicators if val]
-        if len(selected) != 4 or not cat_a or not cat_b:
-            return []
 
+        # Split into A & B groups
         indicators_cat_a = selected[:2]
         indicators_cat_b = selected[2:]
-        full_data = []
 
-        for indicators in [indicators_cat_a, indicators_cat_b]:
-            try:
+        # Ensure at least 1 indicator in each group
+        if len(indicators_cat_a) < 1 or len(indicators_cat_b) < 1 or not cat_a or not cat_b:
+            return []
+
+
+        try:
+            # Split into 2 groups (A & B)
+            indicators_cat_a = selected[:2]
+            indicators_cat_b = selected[2:]
+            full_data = []
+
+            for indicators in [indicators_cat_a, indicators_cat_b]:
                 endpoint = "/getDistrictsByIndicators" if selected_state else "/getStatesByIndicators"
                 payload = {
                     "selected_indicators": indicators,
@@ -1484,17 +1542,116 @@ def create_layout():
                 response = requests.post(BASE_URL + endpoint, json=payload)
                 response.raise_for_status()
                 full_data.extend(response.json().get("indicator_data", []))
-            except Exception as e:
-                return [html.Div(f"AI Insight Error: {str(e)}")]
 
-        state_name = None
-        if selected_state:
-            state_lookup = next((s for s in fetch_states() if s['state_id'] == selected_state), None)
-            if state_lookup:
-                state_name = state_lookup['state_name']
+            # --- Fetch stats + correlation tables ---
+            stats_payload = {
+                "selected_indicators": selected,
+                "category_type": category_type,
+                "selected_state": selected_state
+            }
+            stats_response = requests.post(BASE_URL + "/indicator-stats", json=stats_payload)
+            correlation_response = requests.post(BASE_URL + "/indicator-correlation", json=stats_payload)
 
-        insight_text = generate_insights(full_data, state_name=state_name, population_type=category_type)
+            stats_response.raise_for_status()
+            correlation_response.raise_for_status()
 
-        return [dcc.Markdown(insight_text, style={"whiteSpace": "pre-wrap", "padding": "10px"})]
+            stats_data = stats_response.json().get("stats", [])
+            correlation_data = correlation_response.json().get("correlations", [])
+
+            # Convert stats table
+            if stats_data:
+                table_header = [html.Th(col) for col in stats_data[0].keys()]
+                table_rows = [
+                    html.Tr([html.Td(str(val)) for val in row.values()])
+                    for row in stats_data
+                ]
+                stats_table = html.Div(
+                    html.Table(
+                        [html.Thead(html.Tr(table_header))] + [html.Tbody(table_rows)],
+                        className="stats-table"
+                    ),
+                    className="stats-table-container"
+                )
+            else:
+                stats_table = html.P("No statistics available.", className="no-stats-message")
+
+            # Convert correlation table
+            if correlation_data:
+                table_header = [html.Th(col) for col in correlation_data[0].keys()]
+                table_rows = [
+                    html.Tr([html.Td(str(val)) for val in row.values()])
+                    for row in correlation_data
+                ]
+                correlation_table = html.Div(
+                    html.Table(
+                        [html.Thead(html.Tr(table_header))] + [html.Tbody(table_rows)],
+                        className="stats-table"
+                    ),
+                    className="stats-table-container"
+                )
+            else:
+                correlation_table = html.P("No correlations available.", className="no-stats-message")
+
+            # --- AI Summary ---
+            summary_payload = {
+                "selected_indicators": selected,
+                "category_type": category_type,
+                "selected_state": selected_state
+            }
+            try:
+                summary_response = requests.post(BASE_URL + "/indicator-summary", json=summary_payload)
+                summary_response.raise_for_status()
+                summary_text = summary_response.json().get("summary", "No summary generated.")
+            except requests.RequestException as e:
+                summary_text = f"⚠️ Error generating summary: {str(e)}"
+
+            # --- Final Layout ---
+            return [
+                html.Div([
+                    html.Div([
+                        html.H4("Indicator Description", className="stats-header"),
+                    ], className="section-container"),
+
+                    # Stats Table
+                    html.Div([stats_table], className="stats-container"),
+
+                    html.Div([
+                        html.H4("Indicator Correlation", className="stats-header"),
+                    ], className="section-container"),
+
+                    html.Div([correlation_table], className="stats-container"),
+
+                    html.Div([
+                        html.H4("Analytical Summary", className="section-header"),
+                        html.Div(
+                            summary_text,
+                            className="summary-box",
+                            style={
+                                "border": "1px solid #ccc",
+                                "padding": "12px",
+                                "borderRadius": "8px",
+                                "backgroundColor": "#f9f9f9",
+                                "whiteSpace": "pre-wrap"
+                            }
+                        )
+                    ], className="summary-container"),
+                ], className="insights-container")
+            ]
+
+        except requests.RequestException as e:
+            return [
+                html.Div([
+                    html.H4("⚠️ Connection Error", className="error-title"),
+                    html.P(f"Unable to fetch AI insights: {str(e)}", className="error-message"),
+                    html.Button("🔄 Retry", id="retry-insights-btn-tab2", className="retry-button")
+                ], className="error-container")
+            ]
+        except Exception as e:
+            return [
+                html.Div([
+                    html.H4("❌ Error", className="error-title"),
+                    html.P(f"An unexpected error occurred: {str(e)}", className="error-message")
+                ], className="error-container")
+            ]
 
     return app

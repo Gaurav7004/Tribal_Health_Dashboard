@@ -56,30 +56,27 @@ async def compute_indicator_stats(data, db: AsyncSession):
             max_row = (await db.execute(max_stmt)).first()
             max_val = f"{max_row[1]} ({max_row[0]})" if max_row else None
 
-            # Mean & Stddev
-            stats_stmt = (
-                select(
-                    func.avg(cast(selected_category, Numeric)),
-                    func.stddev(cast(selected_category, Numeric))
-                )
-                .join(District, District.district_id == NFHSDistrictData.district_id)
-                .where(
-                    NFHSDistrictData.indicator_id == indicator_id,
-                    District.state_id == data.selected_state
-                )
-            )
-            mean_val, stddev_val = (await db.execute(stats_stmt)).first()
-
             indicator = await db.get(Indicator, indicator_id)
 
+            # Build the query
+            result_st_avg_total = (
+                                    select(NFHSDistrictData.st_avg_total)
+                                    .where(NFHSDistrictData.indicator_id == indicator_id)
+                                )
+
+            # Execute query
+            st_avg_result = await db.execute(result_st_avg_total)
+
+            # Fetch value(s)
+            st_avg_total = st_avg_result.scalar()  # single value
+
             stats_data.append({
-                "indicator_id": indicator_id,
-                "indicator_name": indicator.indicator_name if indicator else None,
-                "min_value": min_val,
-                "max_value": max_val,
-                "mean": float(mean_val) if mean_val else None,
-                "standard deviation": float(stddev_val) if stddev_val else None,
-                "level": "district"
+                "Indicator Id": indicator_id,
+                "Indicator Name": indicator.indicator_name if indicator else None,
+                "Lowest": min_val,
+                "Highest": max_val,
+                "State Average": float(st_avg_total) if st_avg_total is not None else 50.1,
+                "Level": "District"
             })
 
     # CASE 2: State-level (default)
@@ -109,27 +106,31 @@ async def compute_indicator_stats(data, db: AsyncSession):
             max_row = (await db.execute(max_stmt)).first()
             max_val = f"{max_row[1]} ({max_row[0]})" if max_row else None
 
-            # Mean & Stddev
-            stats_stmt = (
-                select(
-                    func.avg(cast(selected_category, Numeric)),
-                    func.stddev(cast(selected_category, Numeric))
-                )
-                .where(NFHSStateData.indicator_id == indicator_id)
-            )
-            mean_val, stddev_val = (await db.execute(stats_stmt)).first()
 
             indicator = await db.get(Indicator, indicator_id)
 
+            # Build the query
+            result_nat_avg_total = (
+                                    select(NFHSStateData.nat_avg_total)
+                                    .where(NFHSStateData.indicator_id == indicator_id)
+                                )
+
+            # Execute query
+            nat_avg_result = await db.execute(result_nat_avg_total)
+
+            # Fetch value(s)
+            nat_avg_total = nat_avg_result.scalar()  # single value
+
+            # Append to stats_data
             stats_data.append({
-                "indicator_id": indicator_id,
-                "indicator_name": indicator.indicator_name if indicator else None,
-                "min_value": min_val,
-                "max_value": max_val,
-                "mean": float(mean_val) if mean_val else None,
-                "standard deviation": float(stddev_val) if stddev_val else None,
-                "level": "state"
+                "Indicator Id": indicator_id,
+                "Indicator Name": indicator.indicator_name if indicator else None,
+                "Lowest": min_val,
+                "Highest": max_val,
+                "National Average": float(nat_avg_total) if nat_avg_total is not None else 54.1,
+                "Level": "State"
             })
+
 
     return stats_data
 
@@ -176,7 +177,7 @@ async def compute_indicator_correlations(data, db: AsyncSession):
                     "indicator_x_name": ind_x_obj.indicator_name if ind_x_obj else None,
                     "indicator_y_id": ind_y,
                     "indicator_y_name": ind_y_obj.indicator_name if ind_y_obj else None,
-                    "correlation": float(result) if result is not None else None,
+                    "correlation": round(float(result), 2) if result is not None else None,
                     "level": "district"
                 })
 
@@ -210,7 +211,7 @@ async def compute_indicator_correlations(data, db: AsyncSession):
                     "indicator_x_name": ind_x_obj.indicator_name if ind_x_obj else None,
                     "indicator_y_id": ind_y,
                     "indicator_y_name": ind_y_obj.indicator_name if ind_y_obj else None,
-                    "correlation": float(result) if result is not None else None,
+                    "correlation": round(float(result), 2) if result is not None else None,
                     "level": "state"
                 })
 

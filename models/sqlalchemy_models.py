@@ -101,6 +101,7 @@ class NFHSDistrictData(Base):
     st = Column(VARCHAR)
     non_st = Column(VARCHAR)
     total = Column(VARCHAR)
+    st_avg_total = Column(VARCHAR)
 
 # ===Table: NFHS_Rounds===
 # SQLAlchemy model
@@ -121,6 +122,7 @@ class NFHSStateData(Base):
     st = Column(VARCHAR)
     non_st = Column(VARCHAR)
     total = Column(VARCHAR)
+    nat_avg_total = Column(VARCHAR)
 
 # Table: State
 # SQLAlchemy model
