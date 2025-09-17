@@ -35,3 +35,76 @@
   color: #555;
   padding: 10px;
 }
+
+/* Global Container */
+.insights-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+    background-color: #fafafa;
+}
+
+/* Card Layout for each section */
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Section Headers */
+.section-header, .stats-header {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2a6592;
+    margin-bottom: 16px;
+    border-left: 4px solid #2a6592;
+    padding-left: 10px;
+}
+
+/* Tables */
+.stats-container {
+    margin-top: 10px;
+}
+
+/* Markdown Styling for Summary */
+.summary-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    padding: 16px;
+    line-height: 1.6;
+}
+
+.markdown-box h2 {
+    font-size: 18px;
+    color: #2a6592;
+    margin-top: 16px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 4px;
+}
+
+.markdown-box strong {
+    font-weight: 600;
+    color: #1a1a1a;
+    background-color: #f1f8ff;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* Copy Confirmation */
+.copy-confirmation {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: green;
+}
+

@@ -4,7 +4,6 @@ from sqlalchemy import Column, VARCHAR, NUMERIC
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker, declarative_base, aliased
 from sqlalchemy import Column, String, Numeric, cast, select, func, text
-from pydantic import BaseModel
 from typing import List, AsyncGenerator, Optional
 import uvicorn
 from contextlib import asynccontextmanager
@@ -412,17 +411,19 @@ HEALTH CONTEXT: Focus on {{ health_focus }}. Use terms like: {{ keywords }}
 
 TASK: Write exactly 3 paragraphs:
 
-Paragraph 1 - Data Summary:
+Paragraph 1 - Header : Data Summary (Use this header):
 Write: "The analysis of {{ indicator_count }} health indicators reveals significant state-level variations." Then mention the specific lowest and highest performing states with their exact percentages from the data above.
+<break row>
 
-Paragraph 2 - State Comparisons: 
+Paragraph 2 - Header : State/District Comparisons (Use this header): 
 Compare the performance gaps between states. Use phrases like "{{ comparison_phrases }}" and mention specific percentage differences.
+<break row>
 
-Paragraph 3 - Policy Recommendations:
+Paragraph 3 - Header : Policy Recommendations (Use this header):
 Suggest {{ interventions }} for addressing these health disparities. Focus on evidence-based interventions.
 
 IMPORTANT RULES:
-- Compare the lowest, highest values with National Average like (Jharkhand , achieved a 21.5 percent low birth weight rate, while the highest state, Meghalaya 78.8, achieved a high birth weight rate (as compared to **national average**))
+- Compare the lowest, highest values with National Average 
 - Use EXACT state names, indicator names and numbers from the data above
 - Do NOT repeat the same sentence
 - Do NOT use generic phrases like "consistent high values"

@@ -4,9 +4,9 @@ from typing import List
 import textwrap
 from src.data.scale_helper import get_scale_range
 
-def ViolinChartComponent(chart_id, x_data, y_data, title="Violin Chart", 
-                         indicator_type="Neutral", show_points=True, 
-                         color_scheme="default", indicator_id=None):
+def ViolinChartComponent(chart_id, x_data, y_data, title="Box Plot", 
+                     indicator_type="Neutral", show_points=True, 
+                     color_scheme="default", indicator_id=None):
     
     if not x_data or not y_data or len(x_data) != len(y_data):
         return _empty_graph(chart_id, "No data to display")
@@ -30,11 +30,11 @@ def ViolinChartComponent(chart_id, x_data, y_data, title="Violin Chart",
         for val in values:
             if indicator_type == 'Positive':
                 if val >= 75:
-                    colors.append('#28a745')
+                    colors.append('#28a745')  # green
                 elif val >= 50:
-                    colors.append('#fd7e14')
+                    colors.append('#fd7e14')  # orange
                 else:
-                    colors.append('#dc3545')
+                    colors.append('#dc3545')  # red
             elif indicator_type == 'Negative':
                 if val <= 25:
                     colors.append('#28a745')
@@ -43,23 +43,21 @@ def ViolinChartComponent(chart_id, x_data, y_data, title="Violin Chart",
                 else:
                     colors.append('#dc3545')
             else:
-                colors.append('#6c757d')
+                colors.append('#6c757d')  # neutral gray
         return colors
 
-    violin_trace = go.Violin(
-        x=[''] * len(valid_y),
+    # Main Box Plot trace
+    box_trace = go.Box(
         y=valid_y,
-        box_visible=True,
-        meanline_visible=True,
-        line_color='#003a5d',
+        boxpoints=False,   # hide raw points in box trace
+        line=dict(color='#003a5d'),
         fillcolor='rgba(0, 102, 204, 0.3)',
         opacity=0.7,
-        name='Distribution',
-        hoverinfo='y',
-        points=False
+        name="Distribution",
+        hoverinfo="y"
     )
 
-    traces = [violin_trace]
+    traces = [box_trace]
 
     if show_points:
         point_colors = get_point_colors(valid_y, indicator_type)
@@ -75,7 +73,7 @@ def ViolinChartComponent(chart_id, x_data, y_data, title="Violin Chart",
             ),
             customdata=valid_x,
             hovertemplate="<b>%{customdata}</b><br>Value: %{y:.2f}<extra></extra>",
-            name='Data Points',
+            name="Data Points",
             showlegend=False
         )
         traces.append(scatter_trace)
@@ -135,10 +133,13 @@ def _empty_graph(chart_id, message):
                         x=0.5, y=0.5,
                         xanchor='center', yanchor='middle',
                         showarrow=False,
-                        font=dict(size=16, color="gray")
+                        font=dict(size=16, color="cyan")
                     )
                 ]
             )
         ),
         config={'displayModeBar': False}
     )
+
+    
+   

@@ -23,7 +23,8 @@ def tab1_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id="loading-state-dropdown-tab1",
                     type="circle",
-                    children=StateDropdown(id='state-selection', data=states_data)
+                    children=StateDropdown(id='state-selection', data=states_data),
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"}
                 ),
                 width=4
             ),
@@ -32,6 +33,7 @@ def tab1_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id="loading-radio-tab1",
                     type="circle",
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                     children=dcc.RadioItems(
                         id='category-selection-type',
                         options=[{'label': i, 'value': i} for i in ['ST', 'Non-ST', 'Total']],
@@ -49,11 +51,13 @@ def tab1_layout(states_data, placeholder_categories):
                     dcc.Loading(
                         id="loading-reset-btn-tab1",
                         type="circle",
+                        overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                         children=dbc.Button("Reset", id="reset", color="primary", className="me-2")
                     ),
                     dcc.Loading(
                         id="loading-download-btn-tab1",
                         type="circle",
+                        overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                         children=dbc.Button("Download", id="download-btn", color="success")
                     )
                 ], className="d-flex justify-content-end"),
@@ -67,6 +71,7 @@ def tab1_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id="loading-category-dropdown-tab1",
                     type="circle",
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                     children=CategoryDropdown(
                         id='category-selection-dropdown-tab1',
                         data=placeholder_categories
@@ -82,6 +87,7 @@ def tab1_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id=f"loading-indicator-{i}-tab1",
                     type="circle",
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                     children=IndicatorDropdown(id={'type': 'indicator-selection-tab1', 'index': i}, data=[])
                 ),
                 width=3
@@ -97,21 +103,25 @@ def tab1_layout(states_data, placeholder_categories):
                         dcc.Loading(
                             id="loading-bar-tab1",
                             type="circle",
+                            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                             children=html.Div(id='bar-chart-container', style={"display": "none"})
                         ),
                         dcc.Loading(
                             id="loading-violin-tab1",
                             type="circle",
+                            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                             children=html.Div(id='violin-chart-container', style={"display": "none"})
                         ),
                         dcc.Loading(
                             id="loading-map-tab1",
                             type="circle",
+                            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                             children=html.Div(id='map-container', style={"display": "none"})
                         ),
                         dcc.Loading(
                             id="loading-bubble-tab1",
                             type="circle",
+                            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                             children=html.Div(id='bubble-chart-container', style={"display": "none"})
                         )
                     ],
@@ -125,6 +135,7 @@ def tab1_layout(states_data, placeholder_categories):
         dcc.Loading(
             id="loading-ai-tab1",
             type="circle",
+            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
             children=html.Div(
                 dbc.Card([
                     dbc.CardHeader("Analytical Summary", className="fw-bold"),
@@ -151,6 +162,7 @@ def tab2_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id="loading-state-dropdown-tab2",
                     type="circle",
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                     children=StateDropdown(id='state-selection-tab2', data=states_data)
                 ),
                 width=4
@@ -160,6 +172,7 @@ def tab2_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id="loading-radio-tab2",
                     type="circle",
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                     children=dcc.RadioItems(
                         id='category-selection-type-tab2',
                         options=[{'label': i, 'value': i} for i in ['ST', 'Non-ST', 'Total']],
@@ -178,11 +191,13 @@ def tab2_layout(states_data, placeholder_categories):
                     dcc.Loading(
                         id="loading-reset-btn-tab2",
                         type="circle",
+                        overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                         children=dbc.Button("Reset", id="reset-tab2", color="primary", className="me-2")
                     ),
                     dcc.Loading(
                         id="loading-download-btn-tab2",
                         type="circle",
+                        overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                         children=dbc.Button("Download", id="download-btn-tab2", color="success")
                     )
                 ], className="d-flex justify-content-end"),
@@ -196,6 +211,7 @@ def tab2_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id="loading-category-dropdown-tab2-a",
                     type="circle",
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                     children=CategoryDropdown(
                         id='category-selection-dropdown-tab2-a',
                         data=placeholder_categories
@@ -207,6 +223,7 @@ def tab2_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id="loading-category-dropdown-tab2-b",
                     type="circle",
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                     children=CategoryDropdown(
                         id='category-selection-dropdown-tab2-b',
                         data=placeholder_categories
@@ -222,6 +239,7 @@ def tab2_layout(states_data, placeholder_categories):
                 dcc.Loading(
                     id=f"loading-indicator-{i}-tab2",
                     type="circle",
+                    overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                     children=IndicatorDropdown(id={'type': 'indicator-selection-tab2', 'index': i}, data=[])
                 ),
                 width=3
@@ -237,21 +255,25 @@ def tab2_layout(states_data, placeholder_categories):
                         dcc.Loading(
                             id="loading-bar-tab2",
                             type="circle",
+                            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                             children=html.Div(id='bar-chart-container-tab2', style={"display": "none"})
                         ),
                         dcc.Loading(
                             id="loading-violin-tab2",
                             type="circle",
+                            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                             children=html.Div(id='violin-chart-container-tab2', style={"display": "none"})
                         ),
                         dcc.Loading(
                             id="loading-map-tab2",
                             type="circle",
+                            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                             children=html.Div(id='map-container-tab2', style={"display": "none"})
                         ),
                         dcc.Loading(
                             id="loading-bubble-tab2",
                             type="circle",
+                            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
                             children=html.Div(id='bubble-chart-container-tab2', style={"display": "none"})
                         )
                     ],
@@ -263,6 +285,7 @@ def tab2_layout(states_data, placeholder_categories):
         # AI Insights section
         dcc.Loading(
             id="loading-ai-tab2",
+            overlay_style={"visibility":"visible", "filter": "blur(2px)"},
             type="circle",
             children=html.Div(
                 dbc.Card([
@@ -293,6 +316,7 @@ def create_layout():
         id="global-loading",
         fullscreen=True,
         type="circle",
+        overlay_style={"visibility":"visible", "filter": "blur(2px)"},
         children=html.Div([
 
             # === Fixed Header ===
@@ -514,11 +538,10 @@ def create_layout():
         prevent_initial_call=True
     )
     def update_bar_charts(selected_indicators, category_type, selected_state, current_tab):
-        if current_tab != 'tab-1':
+        if current_tab != "tab-1":
             return []
 
         selected = [val for val in selected_indicators if val]
-
         if not selected:
             return [html.Div("No indicator selected")]
 
@@ -527,14 +550,13 @@ def create_layout():
 
         try:
             response = requests.post(
-                BASE_URL + "/getDistrictsByIndicators" if selected_state else BASE_URL + "/getStatesByIndicators",
+                BASE_URL + ("/getDistrictsByIndicators" if selected_state else "/getStatesByIndicators"),
                 json={
                     "selected_indicators": selected,
                     "category_type": category_type,
                     "selected_state": selected_state
                 }
             )
-
             response.raise_for_status()
         except Exception as e:
             return [html.Div(f"API Error: {str(e)}")]
@@ -544,33 +566,49 @@ def create_layout():
             return [html.Div("API returned no data")]
 
         charts = []
-        for ind in data:
-            raw = ind["data"]
-            indicator_name = ind["indicator_name"]
+        label_field = "district_name" if selected_state else "state_name"
 
-            label_field = "district_name" if selected_state else "state_name"
-            y_vals = [entry[label_field] for entry in raw]
-            x_vals = [entry.get(category_type, None) for entry in raw]
+        # Process indicators in pairs (2 per bullet chart)
+        for i in range(0, len(data), 2):
+            group = data[i:i+2]
 
-            if not y_vals or not any(x_vals):
-                charts.append(html.Div(f"No data for {indicator_name}", style={"color": "orange"}))
+            if not group:
                 continue
 
-            chart = BarChartComponent(
-                chart_id=f"bar-chart-{ind['indicator_id']}",
-                x_data=x_vals,
-                y_data=y_vals,
-                category_=category_type,
-                label_field=label_field,
-                title=indicator_name,
-                indicator_id=ind['indicator_id']
-            )
-            charts.append(html.Div(chart, style={"marginBottom": "30px"}))
+            # Use first indicator's y_labels (states/districts)
+            y_labels = [entry[label_field] for entry in group[0]["data"]]
+
+            indicators_for_chart = []
+            colors = ["#031638", "#00F260"]  # two distinct colors for comparison
+
+            for idx, ind in enumerate(group):
+                raw = ind["data"]
+                values = [entry.get(category_type, None) for entry in raw]
+
+                if not any(values):
+                    continue
+
+                indicators_for_chart.append({
+                    "name": ind["indicator_name"],
+                    "values": values,
+                    "color": colors[idx % len(colors)]
+                })
+
+            if indicators_for_chart:
+                chart = BarChartComponent(
+                    chart_id=f"bullet-chart-{i//2}",
+                    indicators=indicators_for_chart,
+                    y_labels=y_labels,
+                    category_=category_type,
+                    title=f"Comparison of {', '.join([ind['indicator_name'] for ind in group])}"
+                )
+                charts.append(html.Div(chart, style={"marginBottom": "30px"}))
 
         if not charts:
             return [html.Div("No valid charts to display")]
 
         return charts
+
 
     ### update Violin Chart Callback Tab 1 ###
     ### **************************** ###
@@ -908,9 +946,7 @@ def create_layout():
         if not selected:
             return [
                 html.Div([
-                    html.H4("📊 AI Insights", className="insights-header"),
-                    html.P("Please select at least one indicator to generate an insight.", 
-                        className="no-selection-message")
+                    html.H4("📊 AI Insights ...", className="insights-header")
                 ], className="insights-container")
             ]
         
@@ -1012,20 +1048,14 @@ def create_layout():
                         correlation_table
                     ], className="stats-container"),
 
+                    # --- Analytical Summary ---
                     html.Div([
-                        html.H4("Analytical Summary", className="section-header"),
+                        html.H2("📝 Analytical Summary", className="section-header"),
                         html.Div(
-                            summary_text,
-                            className="summary-box",   # <-- style this in CSS
-                            style={
-                                "border": "1px solid #ccc",
-                                "padding": "12px",
-                                "borderRadius": "8px",
-                                "backgroundColor": "#f9f9f9",
-                                "whiteSpace": "pre-wrap"
-                            }
-                        )
-                    ], className="summary-container"),
+                            dcc.Markdown(summary_text, className="markdown-box"),
+                            className="summary-box"
+                        ),
+                    ], className="card"),
 
                     html.Div([
                         html.Div(id="copy-confirmation", className="copy-confirmation")
@@ -1162,8 +1192,8 @@ def create_layout():
 
         return options_per_dropdown
 
-    ### update Bar Chart Callback tab2 ###
-    ### ****************************** ###
+    ### update Bar Chart Callback Tab 2 ###
+    ### ******************************* ###
     @app.callback(
         Output("bar-chart-container-tab2", "children"),
         Input({'type': 'indicator-selection-tab2', 'index': ALL}, 'value'),
@@ -1184,53 +1214,68 @@ def create_layout():
 
         charts = []
 
-        # Assign 2 indicators to cat A and 2 to cat B
-        category_map = [cat_a_id, cat_a_id, cat_b_id, cat_b_id]
+        # Split indicators: first 2 for Cat A, last 2 for Cat B
+        category_groups = {
+            cat_a_id: selected[:2],
+            cat_b_id: selected[2:]
+        }
 
-        for i, indicator_id in enumerate(selected):
-            cat_id = category_map[i]
+        # Define palette for up to 4 indicators
+        color_palette = ["#031638", "#00F260", "#FF7F0E", "#1F77B4"]
 
-            try:
-                endpoint = "/getDistrictsByIndicators" if selected_state else "/getStatesByIndicators"
-                response = requests.post(
-                    BASE_URL + endpoint,
-                    json={
-                        "selected_indicators": [indicator_id],
-                        "category_type": category_type,  # ST, Non-ST, or Total
-                        "selected_state": selected_state
-                    }
+        for cat_id, indicators_list in category_groups.items():
+            indicators_for_chart = []
+            y_labels = None
+
+            for idx, indicator_id in enumerate(indicators_list):
+                try:
+                    endpoint = "/getDistrictsByIndicators" if selected_state else "/getStatesByIndicators"
+                    response = requests.post(
+                        BASE_URL + endpoint,
+                        json={
+                            "selected_indicators": [indicator_id],
+                            "category_type": category_type,
+                            "selected_state": selected_state
+                        }
+                    )
+                    response.raise_for_status()
+                except Exception as e:
+                    return [html.Div(f"API Error for indicator {indicator_id} (Category {cat_id}): {str(e)}")]
+
+                data = response.json().get("indicator_data", [])
+                if not data:
+                    charts.append(html.Div(f"No data returned for indicator ID {indicator_id}", style={"color": "orange"}))
+                    continue
+
+                ind = data[0]
+                raw = ind["data"]
+                label_field = "district_name" if selected_state else "state_name"
+                values = [entry.get(category_type, None) for entry in raw]
+                if not any(values):
+                    charts.append(html.Div(f"No data to display for {ind['indicator_name']}", style={"color": "orange"}))
+                    continue
+
+                if y_labels is None:
+                    y_labels = [entry[label_field] for entry in raw]
+
+                indicators_for_chart.append({
+                    "name": ind["indicator_name"],
+                    "values": values,
+                    "color": color_palette[idx % len(color_palette)]
+                })
+
+            if indicators_for_chart:
+                chart = BarChartComponent(
+                    chart_id=f"bar-chart-tab2-{cat_id}",
+                    indicators=indicators_for_chart,
+                    y_labels=y_labels,
+                    category_=category_type,
+                    title=f"Comparison of {', '.join([ind['name'] for ind in indicators_for_chart])} ({cat_id})"
                 )
-                response.raise_for_status()
-            except Exception as e:
-                return [html.Div(f"API Error for indicator {indicator_id} (Category ID {cat_id}): {str(e)}")]
-
-            data = response.json().get("indicator_data", [])
-            if not data:
-                charts.append(html.Div(f"No data returned for indicator ID {indicator_id}", style={"color": "orange"}))
-                continue
-
-            ind = data[0]
-            raw = ind["data"]
-            label_field = "district_name" if selected_state else "state_name"
-            x_vals = [entry.get(category_type, None) for entry in raw]
-            y_vals = [entry[label_field] for entry in raw]
-
-            if not y_vals or not any(x_vals):
-                charts.append(html.Div(f"No data to display for {ind['indicator_name']}", style={"color": "orange"}))
-                continue
-
-            chart = BarChartComponent(
-                chart_id=f"bar-chart-tab2-{indicator_id}",
-                x_data=x_vals,
-                y_data=y_vals,
-                category_=category_type,
-                label_field=label_field,
-                title=f"{ind['indicator_name']} ({category_type})"
-            )
-
-            charts.append(html.Div(chart, style={"marginBottom": "30px"}))
+                charts.append(html.Div(chart, style={"marginBottom": "30px"}))
 
         return charts if charts else [html.Div("No bar charts generated.")]
+
 
     ### update Violin Chart Callback tab2 ###
     ### ********************************* ###
@@ -1622,7 +1667,7 @@ def create_layout():
                     html.Div([correlation_table], className="stats-container"),
 
                     html.Div([
-                        html.H4("Analytical Summary", className="section-header"),
+                        html.H2("Analytical Summary", className="section-header"),
                         html.Div(
                             summary_text,
                             className="summary-box",
